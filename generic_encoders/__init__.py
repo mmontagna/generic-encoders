@@ -1,4 +1,4 @@
-from ._encoders.gzip_encoder import GzipEncoder
+from .encoders.gzip_encoder import GzipEncoder
 
 
 gzip = GzipEncoder()
