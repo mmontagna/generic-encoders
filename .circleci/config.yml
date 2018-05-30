@@ -13,17 +13,18 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python setup.py install
+            python -m virtualenv venv2
+            venv2/bin/python setup.py install
 
       - save_cache:
           paths:
-            - ./venv
+            - ./venv2
           key: v1-dependencies-{{ checksum "VERSION" }}
 
       - run:
           name: run tests
           command: |
-            python -m unittest discover ./test
+            venv2/bin/python -m unittest discover ./test
 
       - store_artifacts:
           path: test-reports
