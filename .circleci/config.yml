@@ -13,8 +13,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python -m virtualenv venv
-            venv/bin/python setup.py install
+            python setup.py install
 
       - save_cache:
           paths:
@@ -24,7 +23,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            venv/bin/python -m unittest discover ./test
+            python -m unittest discover ./test
 
       - store_artifacts:
           path: test-reports
