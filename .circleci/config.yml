@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  test_py2:
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - checkout
+      - run: python setup.py install
+      - run: python -m unittest discover
+  test_py3:
+    docker:
+      - image: circleci/python:3.5
+    steps:
+      - checkout
+      - run: python setup.py install
+      - run: python -m unittest discover
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test_py2
+      - test_py3
