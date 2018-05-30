@@ -26,7 +26,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m unittest discover
+            python -m unittest discover ./test
 
       - store_artifacts:
           path: test-reports
@@ -58,7 +58,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            python -m unittest discover
+            python -m unittest discover ./test
 
       - store_artifacts:
           path: test-reports
