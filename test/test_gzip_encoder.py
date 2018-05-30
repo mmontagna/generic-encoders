@@ -1,7 +1,7 @@
 import unittest
 import six
 
-from generic_encoders import *
+from generic_encoders import gzip
 
 class TestGzipEncoder(unittest.TestCase):
 
