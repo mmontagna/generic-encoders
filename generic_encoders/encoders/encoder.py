@@ -15,6 +15,12 @@ class Encoder(object):
   """
 
   file_suffixes = []
+  all_file_suffixes = {}
+
+  @classmethod
+  def add_encoder(cls, encoder):
+    for file_suffix in encoder.file_suffixes:
+      cls.all_file_suffixes[file_suffix] = encoder
 
   def __init__(self):
     if not hasattr(self, 'inputs'):
@@ -22,6 +28,10 @@ class Encoder(object):
 
     if not hasattr(self, 'outputs'):
       raise NotImplementedError('Encoders must set outputs')
+
+  @property
+  def inverted(self):
+    return InvertedEncoder(self)
 
   def _encode(self, data):
     raise NotImplementedError('encode')
@@ -57,3 +67,19 @@ class Encoder(object):
           ))
     return self._decode(data)
 
+
+class InvertedEncoder(Encoder):
+
+  def __init__(self, encoder):
+    self.encoder = encoder
+    self.file_suffixes = []
+    for suffix in encoder.file_suffixes:
+      self.file_suffixes.append('invert' + suffix)
+    self.inputs = [encoder.outputs]
+    self.outputs = self.inputs[0]
+
+  def encode(self, data):
+    return self.encoder.decode(data)
+
+  def decode(self, data):
+    return self.encoder.encode(data)
