@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -r build/ dist/ sitemapper.egg-info/
+rm -r build/ dist/ ./*.egg-info/
 
 python setup.py sdist bdist_wheel
 
