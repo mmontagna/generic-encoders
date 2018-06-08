@@ -7,7 +7,7 @@ VERSION = open(os.path.join(dir_path, 'VERSION')).read()
 
 setup(
   name = 'generic-encoders',
-  packages = ['generic_encoders'],
+  packages = find_packages(),
   version = VERSION,
   description = '''
   A set of encoders which provide a simple string/byte based interface.
