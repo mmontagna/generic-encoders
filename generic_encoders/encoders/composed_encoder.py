@@ -23,6 +23,8 @@ class ComposedEncoder(Encoder):
     self.include_header = kwargs.get('include_header', False)
     self.check_for_headers = kwargs.get('check_for_headers', True)
     self.file_suffixes = []
+    self.inputs = self.encoders[0].inputs
+    self.outputs = self.encoders[-1].outputs
     last_encoder = None
     for encoder in self.encoders:
       if last_encoder:
