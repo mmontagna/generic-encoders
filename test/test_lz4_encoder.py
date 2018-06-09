@@ -22,7 +22,7 @@ class TestLz4Encoder(unittest.TestCase):
         with self.assertRaises(TypeError) as context:
             lz4.decode(string)
 
-    def test_base64_decode(self):
+    def test_lz4_decode(self):
         string = b"asdaaaaaaaaaaaaaaaaasdasd\n"
         self.assertEqual(string,
             lz4.decode(
