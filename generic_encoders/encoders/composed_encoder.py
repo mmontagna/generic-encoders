@@ -42,6 +42,10 @@ class ComposedEncoder(Encoder):
       return data.startswith(self.header_prefix.encode('utf8'))
     return False
 
+  @property
+  def name(self):
+    return ".".join([x.name for x in self.encoders])
+
   def split_header(self, data):
     header = self.header_prefix
     i = data.index('[')

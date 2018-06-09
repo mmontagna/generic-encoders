@@ -45,12 +45,16 @@ class Encoder(object):
         return True
     return False
 
+  @property
+  def name(self):
+    return self.__class__.__name__
+
   def encode(self, data):
     if not self.type_matches(data, self.inputs):
       raise TypeError('''
         {} cannot encode type '{}' acceptable types are ({})
         '''.strip().format(
-          self.__class__.__name__,
+          self.name,
           type(data).__name__,
           ','.join(["'{}'".format(x.__name__) for x in self.inputs])
           ))
@@ -61,7 +65,7 @@ class Encoder(object):
       raise TypeError('''
         {} cannot decode type '{}' acceptable type is '{}'
         '''.strip().format(
-          self.__class__.__name__,
+          self.name,
           type(data).__name__,
           self.outputs.__name__
           ))
