@@ -80,7 +80,7 @@ class InvertedEncoder(Encoder):
     for suffix in encoder.file_suffixes:
       self.file_suffixes.append('invert' + suffix)
     self.inputs = [encoder.outputs]
-    self.outputs = self.inputs[0]
+    self.outputs = encoder.inputs[0]
 
   def encode(self, data):
     return self.encoder.decode(data)
