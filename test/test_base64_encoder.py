@@ -15,7 +15,7 @@ class TestBase64Encoder(unittest.TestCase):
         string = b"Hello"
         self.assertEqual(string,
             base64.decode(
-                'SGVsbG8='
+                b'SGVsbG8='
                 ))
 
     def test_url_base64_encode_decode(self):
