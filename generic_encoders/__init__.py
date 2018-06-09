@@ -20,8 +20,6 @@ text_utf8 = TextEncoder(encoding='utf-8')
 text_ascii = TextEncoder(encoding='ascii')
 text_latin_1 = TextEncoder(encoding='latin-1')
 
-passthrough = ComposedEncoder()
-
 Encoder.add_encoder(base64)
 Encoder.add_encoder(gzip)
 Encoder.add_encoder(lz4)
