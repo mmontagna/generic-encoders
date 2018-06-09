@@ -48,7 +48,7 @@ class ComposedEncoder(Encoder):
     j = data.index(']')
     return data[i+1:j], data[j+1:]
 
-  def encode(self, data):
+  def _encode(self, data):
     for encoder in self.encoders:
       data = encoder.encode(data)
     if self.include_header:
@@ -68,7 +68,7 @@ class ComposedEncoder(Encoder):
       self.encoder_cache[header] = ComposedEncoder(*encoders)
     return self.encoder_cache[header]
 
-  def decode(self, data):
+  def _decode(self, data):
     if self.check_for_headers and self.has_header(data):
       header, data = self.split_header(data)
       encoder = self.build_encoder_from_header(header)

@@ -12,8 +12,8 @@ class TextEncoder(Encoder):
     #self.file_suffixes = [encoding.replace('-', '')]
     super(TextEncoder, self)
 
-  def encode(self, data):
+  def _encode(self, data):
     return data.encode(self.encoding)
 
-  def decode(self, data):
+  def _decode(self, data):
     return data.decode(self.encoding)

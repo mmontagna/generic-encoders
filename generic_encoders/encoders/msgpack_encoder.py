@@ -21,14 +21,14 @@ class MsgPackEncoder(Encoder):
     self.use_bin_type = use_bin_type
     super(MsgPackEncoder, self)
 
-  def encode(self, data):
+  def _encode(self, data):
     return msgpack.packb(
       data,
       use_bin_type=True,
       default=self._default_packer
       )
 
-  def decode(self, data):
+  def _decode(self, data):
     try:
       if len(data) > 1000:
         gc.disable()

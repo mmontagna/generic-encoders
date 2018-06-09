@@ -15,14 +15,14 @@ class JsonEncoder(Encoder):
     self.skip_errors = skip_errors
     super(JsonEncoder, self)
 
-  def encode(self, data):
+  def _encode(self, data):
     return json.dumps(
       data,
       sort_keys=self.sort_keys,
       default=self._json_serial_force if self.skip_errors else self._json_serial,
       )
 
-  def decode(self, data):
+  def _decode(self, data):
     return json.loads(data)
 
   def _json_serial(self, obj):

@@ -11,8 +11,8 @@ class DillEncoder(Encoder):
   def __init__(self):
     super(DillEncoder, self)
 
-  def encode(self, data):
+  def _encode(self, data):
     return dill.dumps(data)
 
-  def decode(self, data):
+  def _decode(self, data):
     return dill.loads(data)

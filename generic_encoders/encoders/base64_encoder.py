@@ -9,8 +9,8 @@ class Base64Encoder(Encoder):
   def __init__(self):
     super(Base64Encoder, self)
 
-  encode = staticmethod(base64.b64encode)
-  decode = staticmethod(base64.b64decode)
+  _encode = staticmethod(base64.b64encode)
+  _decode = staticmethod(base64.b64decode)
 
 class UrlBase64Encoder(Encoder):
   file_suffixes = ['b64', 'base64']
@@ -19,5 +19,5 @@ class UrlBase64Encoder(Encoder):
   def __init__(self):
     super(UrlBase64Encoder, self)
 
-  encode = staticmethod(base64.urlsafe_b64encode)
-  decode = staticmethod(base64.urlsafe_b64decode)
+  _encode = staticmethod(base64.urlsafe_b64encode)
+  _decode = staticmethod(base64.urlsafe_b64decode)

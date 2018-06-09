@@ -11,8 +11,8 @@ class Lz4Encoder(Encoder):
   def __init__(self):
     super(Lz4Encoder, self)
 
-  def encode(self, data):
+  def _encode(self, data):
     return lz4.frame.compress(data)
 
-  def decode(self, data):
+  def _decode(self, data):
     return lz4.frame.decompress(data)
