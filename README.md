@@ -8,13 +8,26 @@ This package contains an assortment of encoders, serializers, packers, etc...whi
 
 ## Supported Encoders
 
+### Binary Data Encoders
+
 * [gzip](#gzip-encoder)
 * [lz4](#lz4-encoder)
 * [bas64](#base64-encoders)
+
+### Object Encoders
+
 * [dill](#dill-encoder)
 * [json](#json-encoder)
 * [messagepack](#messagepack-encoder)
 
+### Text Encoders
+
+* [utf8](#utf8-encoder)
+* [ascii](#ascii-encoder)
+* [latin-1](#latin-1-encoder)
+
+
+## Binary Data Encoders
 
 ### Gzip Encoder
 
@@ -58,6 +71,8 @@ encoder = ComposedEncoder(Base64Encoder(), TextEncoder(encoding='ascii').inverte
 
 print(encoder.decode(encoder.encode(b'hello world')))
 ```
+
+## Object Encoders
 
 ### Json Encoder
 
@@ -106,4 +121,41 @@ def i_am_a_teapot():
   print("Whistle! Whistle!")
 
 encoder.decode(encoder.encode(i_am_a_teapot))()
+```
+
+## Text Encoders
+
+Text encoders accept string types encode the represented text as binary. 
+
+### utf8 Encoder
+
+Example:
+```
+from generic_encoders import TextEncoder
+
+encoder = TextEncoder(encoding='utf-8')
+
+encoder.decode(encoder.encode("asd"))
+```
+
+### ascii Encoder
+
+Example:
+```
+from generic_encoders import TextEncoder
+
+encoder = TextEncoder(encoding='ascii')
+
+encoder.decode(encoder.encode("asd"))
+```
+
+### latin-1 Encoder
+
+Example:
+```
+from generic_encoders import TextEncoder
+
+encoder = TextEncoder(encoding='latin-1')
+
+encoder.decode(encoder.encode("asd"))
 ```
