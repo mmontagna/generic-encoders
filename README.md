@@ -4,7 +4,35 @@
 
 This package contains an assortment of encoders, serializers, packers, etc...which I've found useful over the years, many of them are composable. 
 
+## Usage 
 
+### Basic Example
+```
+from generic_encoders import ComposedEncoder, GzipEncoder, Base64Encoder, TextEncoder
+
+print(ComposedEncoder(TextEncoder(), GzipEncoder(), Base64Encoder()).encode('Hello world'))
+
+```
+
+### Combining Encoders
+
+Encoders can be composed via the ComposedEncoder class. A favorite of mine is the MessagePack, lz4, base64, ascii encoder which can be constructed like so:
+
+```
+from generic_encoders import ComposedEncoder, MsgPackEncoder, Lz4Encoder, Base64Encoder, TextEncoder
+
+encoder = ComposedEncoder(MsgPackEncoder(), Lz4Encoder(), Base64Encoder(), TextEncoder().inverted)
+```
+
+If an encoder is not capable of accepting the output/input of a parent encoder an EncoderLinkError exception will be raised. 
+
+### Inverting Encoders
+
+Encoders can be inverted, so that their input becomes thier output and their output their input via the `inverted` property, this can be particularly useful when dealing with text encoders.
+
+```
+TextEncoder().inverted
+```
 
 ## Supported Encoders
 
