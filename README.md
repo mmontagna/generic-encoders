@@ -4,6 +4,12 @@
 
 This package contains an assortment of encoders, serializers, packers, etc...which I've found useful over the years, many of them are composable. 
 
+## Installation
+
+```
+pip install generic-encoders
+```
+
 ## Usage 
 
 ### Basic Example
