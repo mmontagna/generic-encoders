@@ -10,16 +10,23 @@ class JsonEncoder(Encoder):
   inputs = [object]
   outputs = six.string_types[0]
 
-  def __init__(self, sort_keys=True, skip_errors=False):
+  def __init__(self, sort_keys=True, skip_errors=False, default=None):
     self.sort_keys = sort_keys
-    self.skip_errors = skip_errors
+    self.default = default
+    if self.default and skip_errors:
+      raise ValueError("Only one of skip_errors and default may be passed.")
+    if not self.default:
+      if skip_errors:
+        self.default = self._json_serial_force
+      else:
+        self.default = self._json_serial
     super(JsonEncoder, self)
 
   def _encode(self, data):
     return json.dumps(
       data,
       sort_keys=self.sort_keys,
-      default=self._json_serial_force if self.skip_errors else self._json_serial,
+      default=self.default
       )
 
   def _decode(self, data):
