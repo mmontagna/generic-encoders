@@ -1,4 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mmontagna/generic-encoders/tree/master.svg?style=svg)](https://circleci.com/gh/mmontagna/generic-encoders/tree/master)
 
 # Generic encoders for data in python
 
-A set of encoders which provide a simple string/byte based interface.
+This package contains an assortment of encoders, serializers, packers, etc...which I've found useful over the years, many of them are composable. 
