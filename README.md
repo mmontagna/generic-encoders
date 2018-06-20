@@ -7,17 +7,17 @@ This package contains an assortment of encoders, serializers, packers, etc...whi
 ## Installation
 
 ```
-pip install generic-encoders
+$ pip install generic-encoders
 ```
 
 ## Usage 
 
 ### Basic Example
 ```
-from generic_encoders import ComposedEncoder, GzipEncoder, Base64Encoder, TextEncoder
+>>> from generic_encoders import ComposedEncoder, GzipEncoder, Base64Encoder, TextEncoder
 
-print(ComposedEncoder(TextEncoder(), GzipEncoder(), Base64Encoder()).encode('Hello world'))
-
+>>> print(ComposedEncoder(TextEncoder(), GzipEncoder(), Base64Encoder()).encode('Hello world'))
+b'H4sIAI0PKlsC//NIzcnJVyjPL8pJAQBSntaLCwAAAA=='
 ```
 
 ### Combining Encoders
@@ -25,9 +25,9 @@ print(ComposedEncoder(TextEncoder(), GzipEncoder(), Base64Encoder()).encode('Hel
 Encoders can be composed via the ComposedEncoder class. A favorite of mine is the MessagePack, lz4, base64, ascii encoder which can be constructed like so:
 
 ```
-from generic_encoders import ComposedEncoder, MsgPackEncoder, Lz4Encoder, Base64Encoder, TextEncoder
+>>> from generic_encoders import ComposedEncoder, MsgPackEncoder, Lz4Encoder, Base64Encoder, TextEncoder
 
-encoder = ComposedEncoder(MsgPackEncoder(), Lz4Encoder(), Base64Encoder(), TextEncoder().inverted)
+>>> encoder = ComposedEncoder(MsgPackEncoder(), Lz4Encoder(), Base64Encoder(), TextEncoder().inverted)
 ```
 
 If an encoder is not capable of accepting the output/input of a parent encoder an EncoderLinkError exception will be raised. 
@@ -37,7 +37,7 @@ If an encoder is not capable of accepting the output/input of a parent encoder a
 Encoders can be inverted, so that their input becomes thier output and their output their input via the `inverted` property, this can be particularly useful when dealing with text encoders.
 
 ```
-TextEncoder().inverted
+>>> TextEncoder().inverted
 ```
 
 ## Supported Encoders
@@ -69,11 +69,10 @@ The gzip encoder accepts binary data compresses it and outputs binary data. See 
 
 Example:
 ```
-from generic_encoders import GzipEncoder
-
-encoder = GzipEncoder()
-
-print(encoder.decode(encoder.encode(b'hello world')))
+>>> from generic_encoders import GzipEncoder
+>>> encoder = GzipEncoder()
+>>> print(encoder.decode(encoder.encode(b'hello world')))
+b'hello world'
 ```
 
 ### Lz4 Encoder
@@ -82,11 +81,10 @@ The lz4 encoder accepts binary data and outputs binary data. It typically takes 
 
 Example:
 ```
-from generic_encoders import Base64Encoder, UrlBase64Encoder
-
-encoder = Base64Encoder()
-
-print(encoder.decode(encoder.encode(b'hello world')))
+>>> from generic_encoders import Base64Encoder, UrlBase64Encoder
+>>> encoder = Base64Encoder()
+>>> print(encoder.decode(encoder.encode(b'hello world')))
+b'hello world'
 ```
 
 ### Base64 Encoders
@@ -97,13 +95,12 @@ These encoders accept binary data and produce binary data, but not that as these
 
 Example:
 ```
-from generic_encoders import Base64Encoder
-from generic_encoders import ComposedEncoder
-from generic_encoders import TextEncoder
-
-encoder = ComposedEncoder(Base64Encoder(), TextEncoder(encoding='ascii').inverted)
-
-print(encoder.decode(encoder.encode(b'hello world')))
+>>> from generic_encoders import Base64Encoder
+>>> from generic_encoders import ComposedEncoder
+>>> from generic_encoders import TextEncoder
+>>> encoder = ComposedEncoder(Base64Encoder(), TextEncoder(encoding='ascii').inverted)
+>>> print(encoder.decode(encoder.encode(b'hello world')))
+b'hello world'
 ```
 
 ## Object Encoders
@@ -120,11 +117,10 @@ See https://en.wikipedia.org/wiki/JSON for more info.
 
 Example:
 ```
-from generic_encoders import JsonEncoder
-
-encoder = JsonEncoder()
-
-print(encoder.decode(encoder.encode({'message': 'hello world'})))
+>>> from generic_encoders import JsonEncoder
+>>> encoder = JsonEncoder()
+>>> print(encoder.decode(encoder.encode({'message': 'hello world'})))
+{'message': 'hello world'}
 ```
 
 
@@ -134,11 +130,11 @@ The MessagePack encoder encodes python objects as packed bytes, it's like a bina
 
 Example:
 ```
-from generic_encoders import MsgPackEncoder
+>>> from generic_encoders import MsgPackEncoder
+>>> encoder = MsgPackEncoder()
+>>> print(encoder.decode(encoder.encode({'message': 'hello world'})))
+{'message': 'hello world'}
 
-encoder = MsgPackEncoder()
-
-print(encoder.decode(encoder.encode({'message': 'hello world'})))
 ```
 
 ### Dill Encoder
@@ -147,14 +143,13 @@ The dill encoder accepts any picklable python type and outputs bytes all the usu
 
 Example:
 ```
-from generic_encoders import DillEncoder
-
-encoder = DillEncoder()
-
-def i_am_a_teapot():
-  print("Whistle! Whistle!")
-
-encoder.decode(encoder.encode(i_am_a_teapot))()
+>>> from generic_encoders import DillEncoder
+>>> encoder = DillEncoder()
+>>> def i_am_a_teapot():
+...   print("Whistle! Whistle!")
+... 
+>>> encoder.decode(encoder.encode(i_am_a_teapot))()
+Whistle! Whistle!
 ```
 
 ## Text Encoders
@@ -165,31 +160,28 @@ Text encoders accept string types encode the represented text as binary.
 
 Example:
 ```
-from generic_encoders import TextEncoder
-
-encoder = TextEncoder(encoding='utf-8')
-
-encoder.decode(encoder.encode("asd"))
+>>> from generic_encoders import TextEncoder
+>>> encoder = TextEncoder(encoding='utf-8')
+>>> encoder.decode(encoder.encode("asd"))
+'asd'
 ```
 
 ### ascii Encoder
 
 Example:
 ```
-from generic_encoders import TextEncoder
-
-encoder = TextEncoder(encoding='ascii')
-
-encoder.decode(encoder.encode("asd"))
+>>> from generic_encoders import TextEncoder
+>>> encoder = TextEncoder(encoding='ascii')
+>>> encoder.decode(encoder.encode("asd"))
+'asd'
 ```
 
 ### latin-1 Encoder
 
 Example:
 ```
-from generic_encoders import TextEncoder
-
-encoder = TextEncoder(encoding='latin-1')
-
-encoder.decode(encoder.encode("asd"))
+>>> from generic_encoders import TextEncoder
+>>> encoder = TextEncoder(encoding='latin-1')
+>>> encoder.decode(encoder.encode("asd"))
+'asd'
 ```
