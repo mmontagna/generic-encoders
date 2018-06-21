@@ -41,8 +41,5 @@ setup(
     "simplejson>=3.8.0",
   ],
   entry_points = {
-    # 'console_scripts': [
-    #   'credential-runner=credential_runner::main'
-    #   ]
   },
 )
