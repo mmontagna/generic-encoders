@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TAG=v`cat generic_encoders/VERSION`
+TAG=v`cat VERSION`
 
 git tag $TAG
 git push origin $TAG
