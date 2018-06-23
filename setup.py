@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-VERSION = open(os.path.join(dir_path, 'generic_encoders', 'VERSION')).read()
+VERSION = open(os.path.join(dir_path, 'VERSION')).read()
 
 setup(
   name = 'generic-encoders',
@@ -29,10 +29,10 @@ setup(
       'Programming Language :: Python :: 3',
       'Programming Language :: Python :: 3.6',
   ),
-  package_data={'generic_encoders': ['LICENSE', 'VERSION']},
+  data_files = [('', ['LICENSE', 'VERSION'])],
   include_package_data=True,
   python_requires=">=2.7",
-  license=open(os.path.join(dir_path, 'generic_encoders', 'LICENSE')).read(),
+  license=open(os.path.join(dir_path, 'LICENSE')).read(),
   install_requires=[
     "six>=1.9.0",
     "lz4~=1.0.0",
