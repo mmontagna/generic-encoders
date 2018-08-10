@@ -6,6 +6,7 @@ from generic_encoders.encoders.json_encoder import JsonEncoder
 from generic_encoders.encoders.dill_encoder import DillEncoder
 from generic_encoders.encoders.msgpack_encoder import MsgPackEncoder
 from generic_encoders.encoders.text_encoder import TextEncoder
+from generic_encoders.encoders.csv_encoder import CsvEncoder
 from generic_encoders.encoders.composed_encoder import ComposedEncoder
 
 base64 = Base64Encoder()
@@ -15,6 +16,7 @@ lz4 = Lz4Encoder()
 json = JsonEncoder()
 dill = DillEncoder()
 msgpack = MsgPackEncoder()
+csv = CsvEncoder()
 
 text_utf8 = TextEncoder(encoding='utf-8')
 text_ascii = TextEncoder(encoding='ascii')
@@ -29,3 +31,4 @@ Encoder.add_encoder(msgpack)
 Encoder.add_encoder(text_utf8)
 Encoder.add_encoder(text_ascii)
 Encoder.add_encoder(text_latin_1)
+Encoder.add_encoder(csv)
