@@ -26,7 +26,7 @@ class CsvEncoder(Encoder):
 
   def _encode(self, data):
     if self.fieldnames is None:
-        fieldnames = list(chain.from_iterable(imap(lambda x: x.keys(), data)))
+        fieldnames = set(chain.from_iterable(imap(lambda x: x.keys(), data)))
     else:
         fieldnames = self.fieldnames
     f = StringIO()
