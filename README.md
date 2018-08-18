@@ -53,6 +53,7 @@ Encoders can be inverted, so that their input becomes thier output and their out
 * [dill](#dill-encoder)
 * [json](#json-encoder)
 * [messagepack](#messagepack-encoder)
+* [csv](#csv-encoder)
 
 ### Text Encoders
 
@@ -121,6 +122,23 @@ Example:
 >>> encoder = JsonEncoder()
 >>> print(encoder.decode(encoder.encode({'message': 'hello world'})))
 {'message': 'hello world'}
+```
+
+### CSV Encoder
+
+The CSV encoder accepts a list of dictionary like objects and encodes them as a single CSV string.
+
+If field names are not passed to the constructor like `CsvEncoder(fieldnames['field1'...)` then the field names are infered by calling `keys()` on every input object.
+
+It can be configured to write csv headers via the `write_header` argument eg `CsvEncoder(write_header=true)`.
+
+Note that decoding does not infer types and always loads values as strings.
+Example:
+```
+>>> from generic_encoders import CsvEncoder
+>>> encoder = CsvEncoder()
+>>> print(encoder.decode(encoder.encode([{'message': 'hello world', 'somenum': 123}])))
+[{'message': 'hello world', 'somenum': '123'}]
 ```
 
 
