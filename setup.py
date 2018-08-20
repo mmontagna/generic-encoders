@@ -12,7 +12,7 @@ setup(
   description = '''
   A set of encoders which provide a simple string/byte based interface.
   ''',
-  long_description=open('README.md').read(),
+  long_description=open(os.path.join(dir_path, 'README.md')).read(),
   long_description_content_type='text/markdown',
   author = 'Marco Montagna',
   author_email = 'marcojoemontagna@gmail.com',
