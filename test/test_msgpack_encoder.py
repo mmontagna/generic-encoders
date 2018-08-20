@@ -1,7 +1,7 @@
 import unittest
 import six
 
-from generic_encoders import msgpack, MsgPackEncoder
+from generic_encoders import msgpack_encoder, MsgPackEncoder
 
 class TestMsgpackEncoder(unittest.TestCase):
 
@@ -9,15 +9,15 @@ class TestMsgpackEncoder(unittest.TestCase):
         obj = {'a': 123, 'b': (1,2,{'c': 3})}
         self.assertEqual(
           obj,
-          msgpack.decode(
-            msgpack.encode(obj)))
+          msgpack_encoder.decode(
+            msgpack_encoder.encode(obj)))
 
     def test_msgpack_encoder_converts_lists_to_tuples_by_default(self):
         l = [1,2,3]
         self.assertEqual(
           (1,2,3),
-          msgpack.decode(
-            msgpack.encode(l)))
+          msgpack_encoder.decode(
+            msgpack_encoder.encode(l)))
 
     def test_msgpack_encoder_use_list(self):
         l = [1,2,3]

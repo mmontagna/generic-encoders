@@ -2,7 +2,7 @@ import unittest
 import six
 from datetime import datetime
 
-from generic_encoders import json
+from generic_encoders import json_encoder
 from generic_encoders.encoders.json_encoder import JsonEncoder
 
 class TestJsonEncoder(unittest.TestCase):
@@ -11,26 +11,26 @@ class TestJsonEncoder(unittest.TestCase):
         string = {'a': 123, 'b': [1,2,{'c': 3}]}
         self.assertEqual(
           string,
-          json.decode(
-            json.encode(string)))
+          json_encoder.decode(
+            json_encoder.encode(string)))
 
     def test_json_encoder_handles_datetimes(self):
         now = datetime.utcnow()
         self.assertEqual(
           now.isoformat(),
-          json.decode(json.encode(now)))
+          json_encoder.decode(json_encoder.encode(now)))
 
     def test_json_encoder_handles_dates(self):
         now = datetime.utcnow().date()
         self.assertEqual(
           now.isoformat(),
-          json.decode(json.encode(now)))
+          json_encoder.decode(json_encoder.encode(now)))
 
     def test_json_encoder_handles_dates(self):
         now = datetime.utcnow().date()
         self.assertEqual(
           now.isoformat(),
-          json.decode(json.encode(now)))
+          json_encoder.decode(json_encoder.encode(now)))
 
     def test_json_encoder_throws_exception_when_passed_bogus(self):
         encoder = JsonEncoder(skip_errors=False)

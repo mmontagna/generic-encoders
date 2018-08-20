@@ -1,7 +1,7 @@
 import unittest
 import six
 
-from generic_encoders import dill
+from generic_encoders import dill_encoder
 
 class TestDillEncoder(unittest.TestCase):
 
@@ -9,19 +9,19 @@ class TestDillEncoder(unittest.TestCase):
         string = {'a': 123, 'b': [1,2,{'c': 3}]}
         self.assertEqual(
           string,
-          dill.decode(
-            dill.encode(string)))
+          dill_encoder.decode(
+            dill_encoder.encode(string)))
 
     def test_dill_handles_modules(self):
         self.assertEqual(
           123,
-          dill.decode(dill.encode(dill)).decode(dill.encode(123))
+          dill_encoder.decode(dill_encoder.encode(dill_encoder)).decode(dill_encoder.encode(123))
           )
 
     def test_dill_handles_modules(self):
         self.assertEqual(
           123,
-          dill.decode(dill.encode(dill)).decode(dill.encode(123))
+          dill_encoder.decode(dill_encoder.encode(dill_encoder)).decode(dill_encoder.encode(123))
           )
 
 
