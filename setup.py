@@ -29,7 +29,7 @@ setup(
       'Programming Language :: Python :: 3',
       'Programming Language :: Python :: 3.6',
   ),
-  data_files = [('', ['LICENSE', 'VERSION'])],
+  data_files = [('', ['LICENSE', 'VERSION', 'README.md'])],
   include_package_data=True,
   python_requires=">=2.7",
   license=open(os.path.join(dir_path, 'LICENSE')).read(),
