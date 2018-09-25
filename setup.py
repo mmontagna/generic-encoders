@@ -40,6 +40,10 @@ setup(
     "msgpack~=0.5.6",
     "simplejson>=3.8.0",
   ],
+  extras_require={
+      'avro':  ["fastavro~=0.21.7"],
+      'dev':  ["fastavro~=0.21.7"],
+  },
   entry_points = {
   },
 )
