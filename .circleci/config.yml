@@ -7,8 +7,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "VERSION" }}
-          - v1-dependencies-
+          - v1-py2-dependencies-{{ checksum "VERSION" }}
+          - v1-py2-dependencies-
 
       - run:
           name: install dependencies
@@ -37,8 +37,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "VERSION" }}
-          - v1-dependencies-
+          - v1-py3-dependencies-{{ checksum "VERSION" }}
+          - v1-py3-dependencies-
 
       - run:
           name: install dependencies
