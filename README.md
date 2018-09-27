@@ -54,6 +54,7 @@ Encoders can be inverted, so that their input becomes thier output and their out
 * [json](#json-encoder)
 * [messagepack](#messagepack-encoder)
 * [csv](#csv-encoder)
+* [avro](#avro-encoder)
 
 ### Text Encoders
 
@@ -168,6 +169,47 @@ Example:
 ... 
 >>> encoder.decode(encoder.encode(i_am_a_teapot))()
 Whistle! Whistle!
+```
+
+### Avro Encoder
+
+The avro encoder supports encoding objects in the avro format type. The encoder requires an avro schema to encoder but not decode objects. The decoder returns a generator object.
+
+#### Installation
+
+You'll need to install the avro extras package eg.
+
+```
+pip install -e generic-encoders[avro]
+```
+
+Example:
+```
+>>> from generic_encoders import AvroEncoder
+>>> 
+>>> schema = {
+...     'doc': 'A weather reading.',
+...     'name': 'Weather',
+...     'namespace': 'test',
+...     'type': 'record',
+...     'fields': [
+...         {'name': 'station', 'type': 'string'},
+...         {'name': 'time', 'type': 'long'},
+...         {'name': 'temp', 'type': 'int'},
+...     ],
+... }
+>>> 
+>>> records = [
+...     {u'station': u'011990-99999', u'temp': 0, u'time': 1433269388},
+...     {u'station': u'011990-99999', u'temp': 22, u'time': 1433270389},
+...     {u'station': u'011990-99999', u'temp': -11, u'time': 1433273379},
+...     {u'station': u'012650-99999', u'temp': 111, u'time': 1433275478},
+... ]
+>>> 
+>>> encoder = AvroEncoder(schema)
+>>> 
+>>> list(encoder.decode(encoder.encode(records)))
+[{u'station': u'011990-99999', u'temp': 0, u'time': 1433269388}, {u'station': u'011990-99999', u'temp': 22, u'time': 1433270389}, {u'station': u'011990-99999', u'temp': -11, u'time': 1433273379}, {u'station': u'012650-99999', u'temp': 111, u'time': 1433275478}]
 ```
 
 ## Text Encoders

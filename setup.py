@@ -43,6 +43,7 @@ setup(
   extras_require={
       'avro':  ["fastavro~=0.21.7"],
       'dev':  ["fastavro~=0.21.7"],
+      'all':  ["fastavro~=0.21.7"],
   },
   entry_points = {
   },
