@@ -8,6 +8,8 @@ from generic_encoders.encoders.msgpack_encoder import MsgPackEncoder
 from generic_encoders.encoders.text_encoder import TextEncoder
 from generic_encoders.encoders.csv_encoder import CsvEncoder
 from generic_encoders.encoders.composed_encoder import ComposedEncoder
+from generic_encoders.encoders.avro_encoder import AvroEncoder
+
 
 base64_encoder = Base64Encoder()
 url_base64_encoder = UrlBase64Encoder()
@@ -17,6 +19,7 @@ json_encoder = JsonEncoder()
 dill_encoder = DillEncoder()
 msgpack_encoder = MsgPackEncoder()
 csv_encoder = CsvEncoder()
+avro_encoder = AvroEncoder()
 
 text_utf8_encoder = TextEncoder(encoding='utf-8')
 text_ascii_encoder = TextEncoder(encoding='ascii')
