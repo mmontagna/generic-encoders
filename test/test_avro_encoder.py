@@ -1,7 +1,7 @@
 import unittest
 import six
 
-from generic_encoders import avro, AvroEncoder
+from generic_encoders import avro_encoder, AvroEncoder
 
 class TestAvroEncoder(unittest.TestCase):
 
@@ -33,7 +33,7 @@ class TestAvroEncoder(unittest.TestCase):
     def test_avro_decoder_doesnt_need_schema(self):
         encoder = AvroEncoder(self.schema)
         data = encoder.encode(self.records)
-        self.assertEqual(self.records, list(avro.decode(data)))
+        self.assertEqual(self.records, list(avro_encoder.decode(data)))
 
 
 if __name__ == '__main__':
