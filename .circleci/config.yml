@@ -13,7 +13,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            apt-get install libsnappy-dev
+            sudo apt-get install libsnappy-dev
             python -m virtualenv venv2
             venv2/bin/pip install .[dev]
 
@@ -44,7 +44,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            apt-get install libsnappy-dev
+            sudo apt-get install libsnappy-dev
             python -m venv venv
             venv/bin/pip install .[dev]
 
