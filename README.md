@@ -173,7 +173,10 @@ Whistle! Whistle!
 
 ### Avro Encoder
 
-The avro encoder supports encoding objects in the avro format type. The encoder requires an avro schema to encoder but not decode objects. The decoder returns a generator object.
+The avro encoder supports encoding objects in the avro format type. The encoder requires an avro schema to encoder but not decode objects. The decoder returns a generator object. 
+
+The AvroEncoder constructor accepts a `codec` parameter of either `null`, `snappy`, or `deflate`. Use of the snappy codec requires that python-snappy is installed which can be accomplished by installing the `generic-encoders[snappy]` package. Note that the snappy system package must be installed prior, see https://github.com/andrix/python-snappy
+
 
 #### Installation
 
@@ -206,7 +209,7 @@ Example:
 ...     {u'station': u'012650-99999', u'temp': 111, u'time': 1433275478},
 ... ]
 >>> 
->>> encoder = AvroEncoder(schema)
+>>> encoder = AvroEncoder(schema, codec="deflate")
 >>> 
 >>> list(encoder.decode(encoder.encode(records)))
 [{u'station': u'011990-99999', u'temp': 0, u'time': 1433269388}, {u'station': u'011990-99999', u'temp': 22, u'time': 1433270389}, {u'station': u'011990-99999', u'temp': -11, u'time': 1433273379}, {u'station': u'012650-99999', u'temp': 111, u'time': 1433275478}]
