@@ -5,6 +5,9 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 VERSION = open(os.path.join(dir_path, 'VERSION')).read()
 
+snappy_version = "0.5.3"
+avro_version = "0.21.7"
+
 setup(
   name = 'generic-encoders',
   packages = find_packages(),
@@ -41,9 +44,16 @@ setup(
     "simplejson>=3.8.0",
   ],
   extras_require={
-      'avro':  ["fastavro~=0.21.7"],
-      'dev':  ["fastavro~=0.21.7"],
-      'all':  ["fastavro~=0.21.7"],
+      'avro': ["fastavro~={}".format(avro_version)],
+      'snappy': ["python-snappy~={}".format(snappy_version)],
+      'dev': [
+        "fastavro~={}".format(avro_version),
+        "python-snappy~={}".format(snappy_version)
+      ],
+      'all':  [
+        "fastavro~={}".format(avro_version),
+        "python-snappy~={}".format(snappy_version)
+      ],
   },
   entry_points = {
   },
