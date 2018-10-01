@@ -46,7 +46,7 @@ Encoders can be inverted, so that their input becomes thier output and their out
 
 * [gzip](#gzip-encoder)
 * [lz4](#lz4-encoder)
-* [bas64](#base64-encoders)
+* [base64](#base64-encoders)
 
 ### Object Encoders
 
