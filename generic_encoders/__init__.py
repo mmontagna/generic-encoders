@@ -9,6 +9,7 @@ from generic_encoders.encoders.text_encoder import TextEncoder
 from generic_encoders.encoders.csv_encoder import CsvEncoder
 from generic_encoders.encoders.composed_encoder import ComposedEncoder
 from generic_encoders.encoders.avro_encoder import AvroEncoder
+from generic_encoders.encoders.snappy_encoder import SnappyEncoder
 
 
 base64_encoder = Base64Encoder()
@@ -20,6 +21,7 @@ dill_encoder = DillEncoder()
 msgpack_encoder = MsgPackEncoder()
 csv_encoder = CsvEncoder()
 avro_encoder = AvroEncoder()
+snappy_encoder = SnappyEncoder()
 
 text_utf8_encoder = TextEncoder(encoding='utf-8')
 text_ascii_encoder = TextEncoder(encoding='ascii')
@@ -35,3 +37,4 @@ Encoder.add_encoder(text_utf8_encoder)
 Encoder.add_encoder(text_ascii_encoder)
 Encoder.add_encoder(text_latin_1_encoder)
 Encoder.add_encoder(csv_encoder)
+Encoder.add_encoder(snappy_encoder)
