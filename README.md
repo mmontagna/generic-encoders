@@ -47,6 +47,7 @@ Encoders can be inverted, so that their input becomes thier output and their out
 * [gzip](#gzip-encoder)
 * [lz4](#lz4-encoder)
 * [base64](#base64-encoders)
+* [snappy](#snappy-encoder)
 
 ### Object Encoders
 
@@ -103,6 +104,26 @@ Example:
 >>> encoder = ComposedEncoder(Base64Encoder(), TextEncoder(encoding='ascii').inverted)
 >>> print(encoder.decode(encoder.encode(b'hello world')))
 b'hello world'
+```
+
+### Snappy Encoders
+
+The snappy encoder accepts binary data compresses it and outputs binary data. See https://en.wikipedia.org/wiki/Snappy_(compression)
+
+#### Installation
+
+First you'll need to install the snappy system package `apt-get install libsnappy-dev` on debian/ubuntu or `brew install snappy` via homebrew or see https://github.com/andrix/python-snappy for more information. Then you'll need to install the snappy extras package:
+
+```
+pip install -e generic-encoders[snappy]
+```
+
+Example:
+```
+>>> from generic_encoders import SnappyEncoder
+>>> encoder = SnappyEncoder()
+>>> encoder.decode(encoder.encode(b"hello world"))
+'hello world'
 ```
 
 ## Object Encoders
