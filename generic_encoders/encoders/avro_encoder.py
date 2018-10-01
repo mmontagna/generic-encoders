@@ -15,7 +15,7 @@ class AvroEncoder(Encoder):
   inputs = [list, types.GeneratorType]
   outputs = six.binary_type
 
-  def __init__(self, avro_schema = None):
+  def __init__(self, avro_schema = None, codec='null', sync_interval=16000):
     self.avro_schema = avro_schema
     if avro_schema:
       try:
@@ -27,6 +27,9 @@ class AvroEncoder(Encoder):
     else:
       self.parsed_avro_schema = None
 
+    self.codec = codec
+    self.sync_interval = sync_interval
+
   def _encode(self, data):
     try:
         from fastavro import writer
@@ -34,7 +37,7 @@ class AvroEncoder(Encoder):
         _print_import_error()
         raise
     out = BytesIO()
-    writer(out, self.parsed_avro_schema, data)
+    writer(out, self.parsed_avro_schema, data, codec=self.codec, sync_interval=self.sync_interval)
     return out.getvalue()
 
   def _decode(self, data):
