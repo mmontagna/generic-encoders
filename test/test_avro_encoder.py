@@ -30,6 +30,16 @@ class TestAvroEncoder(unittest.TestCase):
         data = encoder.encode(self.records)
         self.assertEqual(self.records, list(encoder.decode(data)))
 
+    def test_avro_encode_decode_with_snappy(self):
+        encoder = AvroEncoder(self.schema, codec='snappy')
+        data = encoder.encode(self.records)
+        self.assertEqual(self.records, list(encoder.decode(data)))
+
+    def test_avro_encode_decode_with_deflate(self):
+        encoder = AvroEncoder(self.schema, codec='deflate')
+        data = encoder.encode(self.records)
+        self.assertEqual(self.records, list(encoder.decode(data)))
+
     def test_avro_decoder_doesnt_need_schema(self):
         encoder = AvroEncoder(self.schema)
         data = encoder.encode(self.records)
