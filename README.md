@@ -106,7 +106,7 @@ Example:
 b'hello world'
 ```
 
-### Snappy Encoders
+### Snappy Encoder
 
 The snappy encoder accepts binary data compresses it and outputs binary data. See https://en.wikipedia.org/wiki/Snappy_(compression)
 
