@@ -40,7 +40,7 @@ setup(
     "six>=1.9.0",
     "lz4~=1.0.0",
     "dill~=0.2.5",
-    "msgpack~=0.5.6",
+    "msgpack~=0.6.0",
     "simplejson>=3.8.0",
   ],
   extras_require={
