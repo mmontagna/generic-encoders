@@ -6,7 +6,6 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 VERSION = open(os.path.join(dir_path, 'VERSION')).read()
 
 snappy_version = "0.5.3"
-avro_version = "0.21.7"
 
 setup(
   name = 'generic-encoders',
@@ -39,19 +38,16 @@ setup(
   install_requires=[
     "six>=1.9.0",
     "lz4~=1.0.0",
-    "dill~=0.2.5",
+    "dill>=0.3.6",
     "msgpack~=0.6.0",
     "simplejson>=3.8.0",
   ],
   extras_require={
-      'avro': ["fastavro~={}".format(avro_version)],
       'snappy': ["python-snappy~={}".format(snappy_version)],
       'dev': [
-        "fastavro~={}".format(avro_version),
         "python-snappy~={}".format(snappy_version)
       ],
       'all':  [
-        "fastavro~={}".format(avro_version),
         "python-snappy~={}".format(snappy_version)
       ],
   },
