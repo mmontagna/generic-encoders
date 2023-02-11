@@ -37,9 +37,9 @@ setup(
   license=open(os.path.join(dir_path, 'LICENSE')).read(),
   install_requires=[
     "six>=1.9.0",
-    "lz4~=1.0.0",
+    "lz4>=4.3.2",
     "dill>=0.3.6",
-    "msgpack~=0.6.0",
+    "msgpack>=0.5.6",
     "simplejson>=3.8.0",
   ],
   extras_require={
